@@ -13,7 +13,7 @@ const CountdownBar = (props) => {
       const unix = Math.round(+new Date() / 1000);
       setDate(data.datedata - unix);
     });
-  }, []);
+  }, [props.refreshEndDate]);
 
   timer.start(() => {
     let newCount = count - 1;

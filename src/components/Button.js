@@ -1,15 +1,15 @@
 import { setNewEndDate } from "../actions/endDates";
-
-const Form = () => {
+import { createUser } from "../actions/users";
+const Form = (props) => {
 
 const buttonHandler = (e)=>{
 
 e.preventDefault();
-
+createUser();
 setNewEndDate();
 
 
-
+props.parentCallback();
 
 }
 
