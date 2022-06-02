@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchEndDate } from "../actions/endDates";
+import { fetchEndDate, setNewEndDate } from "../actions/endDates";
 import { timer } from "./Timer";
 import { unixToHuman } from "../utils/unixToHuman";
 
@@ -11,13 +11,27 @@ const CountdownBar = (props) => {
   useEffect(() => {
     fetchEndDate((data) => {
       const unix = Math.round(+new Date() / 1000);
+      //if the end date has passed when going to fetch new date do this, tell server to set new enddate
+        if(data.datedata - unix <= 0 ){
+          setNewEndDate();
+
+        }
       setDate(data.datedata - unix);
     });
-  }, [props.refreshEndDate]);
+  }, []);
 
+//polls server on interval for end date
   timer.start(() => {
-    let newCount = count - 1;
-    setDate(newCount);
+    fetchEndDate((data) => {
+      const unix = Math.round(+new Date() / 1000);
+        if(data.datedada - unix <= 0 ){
+          setNewEndDate();
+
+        }
+      setDate(data.datedata - unix);
+    });
+
+
   }, 1000);
 
   return (

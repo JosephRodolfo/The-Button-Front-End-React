@@ -15,6 +15,6 @@ export const createUser = async () => {
   
       // let data = await response.json();
     } catch (e) {
-      console.error(`Could not set new end date: ${e}`);
+      console.error(`Could not create new user: ${e}`);
     }
   };
