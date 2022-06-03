@@ -39,3 +39,22 @@ export const createUser = async (score, address) => {
       console.error(`Could not get users: ${e}`);
     }
   };
+
+  export const deleteUsers = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/user/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+    } catch (e) {
+      console.error(`Could not deletes users: ${e}`);
+    }
+  };
