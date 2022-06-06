@@ -27,7 +27,32 @@ export const fetchEndDate = async (setState) => {
   }
 };
 
-export const setNewEndDate = async () => {
+export const fetchButtonCreatedDate = async (setState) => {
+  try {
+    //heroku seemed to add a / last time so must watch when deploying
+    const response = await fetch(
+      `${process.env.REACT_APP_PORT}/v1/dates/1`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+   
+        throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    let data = await response.json();
+    setState(data);
+  } catch (e) {
+    console.error(`Could not get button createdDate date: ${e}`);
+  }
+};
+
+export const setNewEndDate = async (callback) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_PORT}/v1/dates/`, {
       method: "POST",
@@ -39,8 +64,9 @@ export const setNewEndDate = async () => {
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
+         let data = await response.json();
 
-    // let data = await response.json();
+    callback(data);
   } catch (e) {
     console.error(`Could not set new end date: ${e}`);
   }

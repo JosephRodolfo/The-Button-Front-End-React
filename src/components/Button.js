@@ -39,7 +39,9 @@ const Form = () => {
       }
     });
 
-    setNewEndDate();
+    setNewEndDate(()=>{
+      
+    });
   };
   //on load gets current high score and sets it in component's state;
   useEffect(() => {
