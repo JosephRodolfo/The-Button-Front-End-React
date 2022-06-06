@@ -1,4 +1,7 @@
+@import './base/settings';
+
 @import './components/header';
 @import './components/countdownBar';
-@import './base/settings';
+@import './components/content-container';
+@import './components/countdownDisplay';
 @import './base/base';

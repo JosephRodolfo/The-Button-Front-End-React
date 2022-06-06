@@ -1,0 +1,14 @@
+.bar-parent {
+    width: 100%;
+    height: $xl-size;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: row;
+align-items: center;}
+
+.bar-child {
+    background-color: red;
+    width: 100%;
+    z-index: 2;
+    height: $l-size;
+}

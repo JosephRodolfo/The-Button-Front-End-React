@@ -4,14 +4,18 @@ import { deleteUsers } from "../actions/users";
 import { fetchEndDate, setNewEndDate, deleteEndDates } from "../actions/endDates";
 import { timer } from "./Timer";
 import { unixToHuman } from "../utils/unixToHuman";
+import CountdownDisplay from "./CountdownDisplay";
 
 const CountdownBar = (props) => {
-  const [count, setDate] = useState(0);
+  //state stores start date and end date in unix, for the purpose of visualization;
+  const [count, setDate] = useState([0, 0]);
   //gets current time and subtracts that from future time to get time left to start countdown. If time is up starts new game, else updates state;
   const gameTurn = () => {
     fetchEndDate((data) => {
       const unix = Math.round(+new Date() / 1000);
       const remainingTime = (data.datedata - unix);
+      const creationTime  = (data.created_at);
+      const unixCreationTime = data.datedata - Math.round(new Date(creationTime) / 1000);
       //if the end date has passed when going to fetch new date do this,delete users and enddate data,  tell server to set new enddate, and return
       //what remains to do here is get winner data to display on page, trigger whatever action will happen
       if (remainingTime <= 0) {
@@ -19,7 +23,11 @@ const CountdownBar = (props) => {
         deleteEndDates()
         setNewEndDate();
       }
-      setDate(remainingTime);
+
+      const createdEndArray = [0, 0];
+      createdEndArray[0] = unixCreationTime;
+      createdEndArray[1] = remainingTime;
+      setDate(createdEndArray);
     });
   };
   //on load gets end date;
@@ -34,18 +42,11 @@ const CountdownBar = (props) => {
 
   return (
     <main className="countdown-bar">
-      <p>{unixToHuman(count)}</p>
       <div className="content-container">
+      <p>{unixToHuman(count[1])}</p>
+
         <div className="countdown-content">
-          {props.array.map((element, index) => {
-            return (
-              <div
-                key={index}
-                className="countdownSquare"
-                id={"square-" + index}
-              ></div>
-            );
-          })}
+         <CountdownDisplay startEnd={count}/>
         </div>
       </div>
     </main>
