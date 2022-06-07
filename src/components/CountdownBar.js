@@ -7,6 +7,7 @@ import {
   deleteEndDates,
   fetchButtonCreatedDate,
 } from "../actions/endDates";
+import { copyHighScores, dropHighScores } from "../actions/highScores";
 import { timer } from "./Timer";
 import { unixToHuman } from "../utils/unixToHuman";
 import CountdownDisplay from "./CountdownDisplay";
@@ -29,12 +30,17 @@ const CountdownBar = (props) => {
       //what remains to do here is get winner data to display on page, trigger whatever action will happen
       if (remainingTime <= 0) {
         setDate([0, 0]);
-        deleteUsers();
-        //need to revist this to make it nicer; there were some confounding factors but I'm sure they're surmountable
-        deleteEndDates().then(() => {
-          setNewEndDate(() => {
-            fetchButtonCreatedDate((date) => {
-              setCreatedDate(date.created_at);
+          //need to revist this to make it nicer; there were some confounding factors but I'm sure they're surmountable
+        dropHighScores(() => {
+          copyHighScores(() => {
+            deleteUsers();
+          });
+        }).then(() => {
+          deleteEndDates().then(() => {
+            setNewEndDate(() => {
+              fetchButtonCreatedDate((date) => {
+                setCreatedDate(date.created_at);
+              });
             });
           });
         });
@@ -55,7 +61,7 @@ const CountdownBar = (props) => {
     });
     timer.start(() => {
       gameTurn();
-    }, 4000);
+    }, 1000);
   }, []);
 
   return (
