@@ -53,7 +53,7 @@ export const createUser = async (score, address) => {
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
-
+ 
     } catch (e) {
       console.error(`Could not deletes users: ${e}`);
     }

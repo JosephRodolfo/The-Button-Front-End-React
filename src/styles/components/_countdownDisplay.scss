@@ -4,11 +4,13 @@
     background-color: lightgrey;
     display: flex;
     flex-direction: row;
-align-items: center;}
+    align-items: center;
+}
 
 .bar-child {
-    background-color: red;
+    background-color: rgb(83, 170, 96);
     width: 100%;
     z-index: 2;
     height: $l-size;
+//  transition: width 10s;
 }

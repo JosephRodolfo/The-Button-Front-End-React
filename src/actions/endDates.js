@@ -1,4 +1,4 @@
-export const fetchEndDate = async (setState) => {
+export const fetchEndDate = async () => {
   try {
     //heroku seemed to add a / last time so must watch when deploying
     const response = await fetch(
@@ -23,7 +23,7 @@ export const fetchEndDate = async (setState) => {
     // }
 
     let data = await response.json();
-    setState(data);
+    return data;
   } catch (e) {
     console.error(`Could not get end date: ${e}`);
   }
