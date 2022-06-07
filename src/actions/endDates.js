@@ -12,13 +12,15 @@ export const fetchEndDate = async (setState) => {
     );
 
     if (!response.ok) {
-      if (response.status === 404) {
-        //if it doesn't find an end date in database, it creates a new one;
-        setNewEndDate();
-      } else {
-        throw new Error(`HTTP error: ${response.status}`);
-      }
+      // if (response.status === 404) {
+      //   //if it doesn't find an end date in database, it creates a new one;
+
+      //   // setNewEndDate();
+
+      // } else {
+      throw new Error(`HTTP error: ${response.status}`);
     }
+    // }
 
     let data = await response.json();
     setState(data);
@@ -30,19 +32,15 @@ export const fetchEndDate = async (setState) => {
 export const fetchButtonCreatedDate = async (setState) => {
   try {
     //heroku seemed to add a / last time so must watch when deploying
-    const response = await fetch(
-      `${process.env.REACT_APP_PORT}/v1/dates/1`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${process.env.REACT_APP_PORT}/v1/dates/1`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!response.ok) {
-   
-        throw new Error(`HTTP error: ${response.status}`);
+      throw new Error(`HTTP error: ${response.status}`);
     }
 
     let data = await response.json();
@@ -64,7 +62,7 @@ export const setNewEndDate = async (callback) => {
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
-         let data = await response.json();
+    let data = await response.json();
 
     callback(data);
   } catch (e) {

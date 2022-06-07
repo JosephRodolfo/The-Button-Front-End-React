@@ -29,12 +29,13 @@ const CountdownBar = (props) => {
       //what remains to do here is get winner data to display on page, trigger whatever action will happen
       if (remainingTime <= 0) {
         setDate([0, 0]);
-        deleteUsers()
-        deleteEndDates();
-        setNewEndDate(() => {
-          fetchButtonCreatedDate((date) => {
-            setCreatedDate(date.created_at);
-  
+        deleteUsers();
+        //need to revist this to make it nicer; there were some confounding factors but I'm sure they're surmountable
+        deleteEndDates().then(() => {
+          setNewEndDate(() => {
+            fetchButtonCreatedDate((date) => {
+              setCreatedDate(date.created_at);
+            });
           });
         });
       } else {
@@ -54,15 +55,8 @@ const CountdownBar = (props) => {
     });
     timer.start(() => {
       gameTurn();
-    }, 1000);
-
-
+    }, 4000);
   }, []);
-
-  // polls server on interval for end date
-  // timer.start(() => {
-  //   gameTurn();
-  // }, 1000);
 
   return (
     <main className="countdown-bar">

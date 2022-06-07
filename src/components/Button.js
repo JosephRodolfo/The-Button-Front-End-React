@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 const Form = () => {
   const [address, setAddress] = useState("");
   const [highScore, setHighScore] = useState(0);
+  let [isWaiting, setWaiting ] = useState(false);
 
   //this function is called on load and when clicking button. to set score in case button is pressed
   //after a round of the game has ended.
@@ -19,6 +20,7 @@ const Form = () => {
   };
 
   const buttonHandler = (e) => {
+    setWaiting(true);
     //button handler fetches end date to generate a score to send to server and gets address from input and creates a user.
     //finally it sets a new end date
     e.preventDefault();
@@ -39,7 +41,12 @@ const Form = () => {
       }
     });
 
-    setNewEndDate(()=>{
+    setNewEndDate((data)=>{
+      if(data){
+        setTimeout(()=>{setWaiting(false)}, 4000)
+      }
+
+      
       
     });
   };
@@ -58,7 +65,7 @@ const Form = () => {
               onChange={(event) => setAddress(event.target.value)}
               placeholder="Enter your public address"
             />
-            <button onClick={buttonHandler} type="submit">
+            <button disabled={isWaiting == true ? true : false} onClick={buttonHandler}>
               Save the button
             </button>
           </form>
