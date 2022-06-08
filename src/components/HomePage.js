@@ -11,17 +11,17 @@ function HomePage() {
 
   const passReset = () => {
     setReset((resetSignal) => !resetSignal);
-    console.log(resetSignal)
   };
 
   const passClicked = () => {
     setClickSignal((clickSignal) => !clickSignal);
+
   };
 
   return (
     <div className="home-page">
       <Header />
-      <CountdownBar click={clickSignal} passReset={passReset}/>
+      <CountdownBar clickSignal={clickSignal} passReset={passReset}/>
       <Form passClicked={passClicked}/>
       <HighScores reset={resetSignal} />
     </div>

@@ -1,0 +1,29 @@
+.button {
+  background-color: #d4d0c7;
+
+  color: black;
+  font: italic bold 15px;
+  font-family: "Times New Roman", Times, serif;
+  width: max-content;
+  height: 22px;
+  padding: 0 8px;
+  font-family: serif;
+}
+
+.text-input {
+    font: normal 13px Arial, SansSerif;
+    width: 200px; 
+
+    height: 22px; 
+    margin:0; 
+    padding: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form *{
+    margin-bottom: $s-size;
+}

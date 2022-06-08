@@ -1,4 +1,4 @@
-export const getHighScores = async (callback) => {
+export const getHighScores = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_PORT}/v1/highScores/`, {
         method: "GET",
@@ -13,9 +13,9 @@ export const getHighScores = async (callback) => {
       }
   
       let data = await response.json();
-      callback(data);
+      return data;
     } catch (e) {
-      console.error(`Could not get high scores: ${e}`);
+      return [];
     }
   };
 

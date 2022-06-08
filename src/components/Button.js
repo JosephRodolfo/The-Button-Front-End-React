@@ -1,8 +1,8 @@
 import { setNewEndDate } from "../actions/endDates";
 import { createUser, getUsers } from "../actions/users";
 import { useState, useEffect } from "react";
-import { getScore } from "./Button.businessLogic";
-const Form = () => {
+import { getScore } from "./business_logic/Button.businessLogic";
+const Form = ({ passClicked }) => {
   const [address, setAddress] = useState("");
   const [highScore, setHighScore] = useState(0);
   let [isWaiting, setWaiting] = useState(false);
@@ -20,6 +20,10 @@ const Form = () => {
     });
   };
 
+ const passClick = ()=>{
+    passClicked();
+  }
+
   const buttonHandler = (e) => {
     setWaiting(true);
     //button handler fetches end date to generate a score to send to server and gets address from input and creates a user.
@@ -35,13 +39,11 @@ const Form = () => {
         }
       })
       .then(() => {
-        setNewEndDate((data) => {
-          if (data) {
-            setTimeout(() => {
-              setWaiting(false);
-            }, 4000);
-          }
-        });
+        
+
+          setTimeout(setWaiting(false), 2000);
+          passClick();
+          setNewEndDate();
       });
   };
 
@@ -54,13 +56,15 @@ const Form = () => {
     <div className="submission-content">
       <div className="content-container">
         <div className="button__content">
-          <form>
+          <form className="form">
             <input
               type="text"
+              className="text-input"
               onChange={(event) => setAddress(event.target.value)}
               placeholder="Enter your public address"
             />
             <button
+              className="button"
               disabled={isWaiting === true ? true : false}
               onClick={buttonHandler}
             >

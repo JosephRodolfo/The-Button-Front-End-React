@@ -1,4 +1,4 @@
-import { fetchEndDate } from "../actions/endDates";
+import { fetchEndDate } from "../../actions/endDates";
 export const getScore = () => {
   let promise = fetchEndDate().then((data) => {
     const unix = Math.round(+new Date() / 1000);

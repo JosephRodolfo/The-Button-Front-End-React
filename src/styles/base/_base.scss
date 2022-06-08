@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
   }
   
   html {
@@ -12,11 +13,10 @@
   }
   
   body {
-    font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
     color: $dark-gray;
     line-height: 1.6;
-    background-color: $off-white
+    background-color: #d4d0c8
   }
   
   button {
