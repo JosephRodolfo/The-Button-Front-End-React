@@ -41,8 +41,6 @@ const Form = ({ passClicked }) => {
         }
       })
       .then(() => {
-        
-
           setTimeout(setWaiting(false), 2000);
           passClick();
           setNewEndDate();
