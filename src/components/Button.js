@@ -10,6 +10,7 @@ const Form = ({ passClicked }) => {
   //this function is called on load and when clicking button. to set score in case button is pressed
   //after a round of the game has ended.
   const buttonTurn = () => {
+    setWaiting(true);
     getUsers((users) => {
       if (users.length === 0) {
         setHighScore(1000000000000000);
@@ -17,6 +18,7 @@ const Form = ({ passClicked }) => {
         let score = users.reduce((prev, curr) => prev.score <= curr.score);
         setHighScore(score.score);
       }
+      setWaiting(false)
     });
   };
 
