@@ -12,7 +12,6 @@ const CountdownBar = ({ passReset }) => {
   //state stores start date and end date in unix, for the purpose of visualization;
   const [count, setDate] = useState([0, 0]);
   const [buttonCreatedDate, setCreatedDate] = useState("");
-  const [buttonRechargeStatus, setRechargeStatus] = useState(false);
   const [loadingStatus, setLoadingStatus] = useState(false);
   //gets current time and subtracts that from future time to get time left to start countdown. If time is up starts new game, else updates state;
   useEffect(() => {
@@ -23,11 +22,9 @@ const CountdownBar = ({ passReset }) => {
         (timeArray) => {
           if (timeArray[1] <= 0 && timeArray[1] > buttonTimeout) {
             setDate(timeArray);
-            setRechargeStatus(true);
             setLoadingStatus(true);
           } else if (timeArray[1] <= buttonTimeout) {
             timer.stop();
-            setRechargeStatus(false);
             setLoadingStatus(true);
             setDate([0, 0]);
             resetGame().then(() => {
@@ -37,7 +34,6 @@ const CountdownBar = ({ passReset }) => {
             });
           } else {
             setLoadingStatus(false);
-            setRechargeStatus(false);
             setDate(timeArray);
 
             //This sets a new button creation date. The division ensures it only calls server in the first seconds
@@ -68,22 +64,22 @@ const CountdownBar = ({ passReset }) => {
       <div className="content-container">
         <div className="countdown-content">
           {loadingStatus ? (
-            <img
+           <div> <img
               alt="loading hourglass"
               className="loader__image"
               src="/images/loader.gif"
             />
-          ) : (
-            <CountdownDisplay startEnd={count} />
-          )}
-          {buttonRechargeStatus ? (
             <p>
-              The button will return soon.
-              {/* {(count[1] * -1 + buttonTimeout) * -1} seconds */}
-            </p>
+            The button will return soon.
+            {/* {(count[1] * -1 + buttonTimeout) * -1} seconds */}
+          </p> </div>
           ) : (
+            <div>
+            <CountdownDisplay startEnd={count} />
             <p>The button has been alive since {buttonCreatedDate}</p>
+            </div>
           )}
+           
         </div>
       </div>
     </main>

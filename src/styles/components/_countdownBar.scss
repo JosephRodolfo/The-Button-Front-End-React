@@ -3,5 +3,10 @@
 
 .countdown-content{
     height: 10em;
+ 
 }
+.countdown-content >div{
 
+display: flex;
+flex-direction: column;
+justify-content: space-between;}
