@@ -1,6 +1,8 @@
 //controller
 // sends to components: array to update bar, loading or not status
 //signals to highscores to refresh when game is over.
+import { setNewEndDate } from "../actions/endDates";
+import { getHighScores } from "../actions/highScores";
 import {
   resetGame,
   getCreatedDate,
@@ -8,6 +10,13 @@ import {
 } from "./controller.helpers/controller.businessLogic";
 
 export const controller = {
+  getHighScores: async function (cb) {
+    let scores = await getHighScores();
+    cb(scores);
+  },
+  recieveClickSignal: function () {
+    setNewEndDate();
+  },
   loading: true,
   timerArray: [],
   buttonTimeout: -5,
@@ -15,7 +24,7 @@ export const controller = {
   setCreated: function (cb) {
     getCreatedDate(cb);
   },
-  hitServer: function (loading, count, created, resetSignal) {
+  hitServer: function (loading, count, created, resetSignal, highScores) {
     calculateTime().then(
       (timeArray) => {
         if (timeArray[1] <= 0 && timeArray[1] > this.buttonTimeout) {
@@ -43,7 +52,8 @@ export const controller = {
           this.timerArray = timeArray;
           count(this.timerArray);
           if (timeArray[1] / timeArray[0] > 0.9) {
-            resetSignal();
+            this.getHighScores(highScores);
+
             getCreatedDate((result) => {
               this.createdDate = result;
 

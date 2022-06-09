@@ -1,4 +1,3 @@
-import { setNewEndDate } from "../actions/endDates";
 import { createUser, getUsers } from "../actions/users";
 import { useState, useEffect } from "react";
 import { getScore } from "./business_logic/Button.businessLogic";
@@ -43,7 +42,6 @@ const Form = ({ passClicked }) => {
       .then(() => {
           setTimeout(setWaiting(false), 2000);
           passClick();
-          setNewEndDate();
       });
   };
 

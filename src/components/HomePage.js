@@ -12,27 +12,37 @@ function HomePage() {
   const [buttonCreatedDate, setCreatedDate] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
   const [resetSignal, setReset] = useState(false);
-  const [clickSignal, setClickSignal] = useState(false);
+  const [highScores, setHighScores] = useState([]);
 
   function passReset() {
     setReset((resetSignal) => !resetSignal);
   }
 
   const passClicked = () => {
-    setClickSignal((clickSignal) => !clickSignal);
+    controller.recieveClickSignal();
   };
 
   useEffect(() => {
+    controller.getHighScores(setHighScores)
     controller.setCreated(setCreatedDate);
     timer.start(() => {
       controller.hitServer(
         setLoadingStatus,
         setDate,
         setCreatedDate,
-        passReset
+        passReset,
+        setHighScores
       );
     }, 1000);
   }, []);
+
+
+  useEffect(() => {
+
+
+
+  }, []);
+
 
   return (
     <div className="home-page">
@@ -41,11 +51,10 @@ function HomePage() {
         count={count}
         buttonCreatedDate={buttonCreatedDate}
         loadingStatus={loadingStatus}
-        clickSignal={clickSignal}
         passReset={passReset}
       />
       <Form passClicked={passClicked} />
-      <HighScores reset={resetSignal} />
+      <HighScores highScores={highScores} reset={resetSignal} />
     </div>
   );
 }
