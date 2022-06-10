@@ -3,10 +3,16 @@
 
 .countdown-content{
     height: 10em;
- 
+max-height: 10em; 
 }
 .countdown-content >div{
-
+height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: space-between;}
+
+.countdown-content >div:first-child{
+background-color: $windows-off-white;
+box-shadow:rgba(0,0,0,0.4) 2px 2px 0  inset, white -1px -1px 0px inset;
+padding: $m-size;
+}

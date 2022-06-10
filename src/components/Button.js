@@ -9,7 +9,6 @@ const Form = ({ passClicked }) => {
   //this function is called on load and when clicking button. to set score in case button is pressed
   //after a round of the game has ended.
   const buttonTurn = () => {
-    setWaiting(true);
     getUsers((users) => {
       if (users.length === 0) {
         setHighScore(1000000000000000);
@@ -17,16 +16,16 @@ const Form = ({ passClicked }) => {
         let score = users.reduce((prev, curr) => prev.score <= curr.score);
         setHighScore(score.score);
       }
-      setWaiting(false)
     });
   };
-
+//tells controller to set a new end date so it seems immediate;
  const passClick = ()=>{
     passClicked();
   }
 
   const buttonHandler = (e) => {
-    setWaiting(true);
+              setWaiting(true)
+
     //button handler fetches end date to generate a score to send to server and gets address from input and creates a user.
     //finally it sets a new end date
     e.preventDefault();
@@ -40,8 +39,8 @@ const Form = ({ passClicked }) => {
         }
       })
       .then(() => {
-          setTimeout(setWaiting(false), 2000);
           passClick();
+          setWaiting(false);
       });
   };
 

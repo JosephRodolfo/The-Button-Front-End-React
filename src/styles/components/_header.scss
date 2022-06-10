@@ -1,2 +1,38 @@
 h1 {
+  color: black;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+h1>span {
+    font-family: sans-serif;
+    font-weight: bolder;
+    letter-spacing: .1em;
+    font-size: larger;
+}
+.bottom-bar {
+  padding: $s-size $s-size 0 $s-size;
+}
+
+header > div.content-container {
+  padding: 0;
+}
+.top-bar {
+  background-color: $windows-blue-2;
+
+  padding: 4px;
+  margin: 2px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-bar > p {
+  margin: 0;
+}
+
+.warning-icon {
+  height: 1em;
+  margin-right: $s-size;
+  margin-left: 0.25em;
 }

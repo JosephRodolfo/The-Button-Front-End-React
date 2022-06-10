@@ -1,28 +1,41 @@
 import React from "react";
 import CountdownDisplay from "./CountdownDisplay";
 
-const CountdownBar = ({ loadingStatus, count, buttonCreatedDate }) => {
-
+const CountdownBar = ({
+  loadingStatus,
+  count,
+  buttonCreatedDate,
+  buttonPressed,
+}) => {
   return (
     <main className="countdown-bar">
       <div className="content-container">
         <div className="countdown-content">
           {loadingStatus ? (
-           <div> <img
-              alt="loading hourglass"
-              className="loader__image"
-              src="/images/loader.gif"
-            />
-            <p>
-            The button will return soon.
-          </p> </div>
+            <div>
+              {!buttonPressed ? (
+                <div>
+                  {" "}
+                  <img
+                    alt="loading hourglass"
+                    className="loader__image"
+                    src="/images/loader.gif"
+                  />
+                  <p>The button will return soon.</p>{" "}
+                </div>
+              ) : (
+                <div>
+                  <img src="images/channels-3.png" classNkame="loader__image" alt="button pressed gif" />
+                  <p>The button has been pressed</p>
+                </div>
+              )}
+            </div>
           ) : (
             <div>
-            <CountdownDisplay startEnd={count} />
-            <p>The button has been alive since {buttonCreatedDate}</p>
+              <CountdownDisplay startEnd={count} />
+              <p>The button has been alive since {buttonCreatedDate}</p>
             </div>
           )}
-           
         </div>
       </div>
     </main>

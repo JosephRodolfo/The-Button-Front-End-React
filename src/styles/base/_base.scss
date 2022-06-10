@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: serif
   }
   
   html {
@@ -13,10 +14,22 @@
   }
   
   body {
+
     font-size: $m-size;
     color: $dark-gray;
     line-height: 1.6;
-    background-color: #d4d0c8
+
+     background-color: $windows-teal;
+    // @include micro-background;
+
+
+     
+    @media (min-width: $desktop-breakpoint) {
+     
+      @include undulating-background;
+
+      
+  }
   }
   
   button {

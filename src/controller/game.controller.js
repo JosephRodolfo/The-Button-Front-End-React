@@ -20,13 +20,16 @@ export const controller = {
   loading: true,
   timerArray: [],
   buttonTimeout: -5,
+  buttonPressed: false,
   createdDate: 0,
   setCreated: function (cb) {
     getCreatedDate(cb);
   },
-  hitServer: function (loading, count, created, resetSignal, highScores) {
+  hitServer: function (loading, count, created, highScores, setButtonPressed) {
     calculateTime().then(
       (timeArray) => {
+        this.buttonPressed = false;
+        setButtonPressed(this.buttonPressed);
         if (timeArray[1] <= 0 && timeArray[1] > this.buttonTimeout) {
           this.timerArray = timeArray;
           count(this.timerArray);
@@ -42,8 +45,6 @@ export const controller = {
           resetGame().then(() => {
             this.loading = false;
             loading(this.loading);
-
-            resetSignal();
           });
         } else {
           this.loading = false;
@@ -52,8 +53,15 @@ export const controller = {
           this.timerArray = timeArray;
           count(this.timerArray);
           if (timeArray[1] / timeArray[0] > 0.9) {
-            this.getHighScores(highScores);
+            if (timeArray[timeArray.length - 1] !== 1 &&timeArray[0]-timeArray[1]<3) {
+              console.log(timeArray[0]-timeArray[1]);
+              this.buttonPressed = true;
+              setButtonPressed(this.buttonPressed);
+              this.loading = true;
+              loading(this.loading);
+            }
 
+            this.getHighScores(highScores);
             getCreatedDate((result) => {
               this.createdDate = result;
 

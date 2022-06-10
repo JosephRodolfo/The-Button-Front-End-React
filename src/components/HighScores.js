@@ -5,11 +5,15 @@ const HighScores = ({ highScores }) => {
     <section className="highscores">
       <div className="content-container">
         <div className="highscores__content">
-          <h2>People Responsible For Saving The Button</h2>
+        <h2>People Responsible for Saving the Button</h2>
 
           {highScores.length !== 0 ? (
             highScores.map((element, index) => {
-              return <HighScoresCard content={element} key={index} />;
+              return (
+              <div>
+
+              <HighScoresCard content={element} key={index} />
+              </div>)
             })
           ) : (
             <p></p>

@@ -17,8 +17,8 @@ export const calculateTime = () => {
       const creationTime = data.created_at;
       const unixCreationTime =
         data.datedata - Math.round(new Date(creationTime) / 1000);
-
-      const newArray = [unixCreationTime, remainingTime + 2];
+      const id = data.id;
+      const newArray = [unixCreationTime, remainingTime + 2, id];
       return newArray;
     },
     () => {
