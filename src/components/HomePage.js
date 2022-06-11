@@ -13,7 +13,8 @@ function HomePage() {
   const [buttonCreatedDate, setCreatedDate] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
   const [highScores, setHighScores] = useState([]);
-  const [buttonPressed, setButtonPressed]=useState(false);
+  const [buttonPressed, setButtonPressed] = useState(false);
+
 
  
 
@@ -21,10 +22,8 @@ function HomePage() {
     controller.recieveClickSignal();
   };
 
-
-
   useEffect(() => {
-    controller.getHighScores(setHighScores)
+    controller.getHighScores(setHighScores);
     controller.setCreated(setCreatedDate);
 
     timer.start(() => {
@@ -32,20 +31,18 @@ function HomePage() {
         setLoadingStatus,
         setDate,
         setCreatedDate,
-        setHighScores, 
+        setHighScores,
         setButtonPressed
       );
     }, 1000);
   }, []);
 
-
-
-
-
   return (
     <div className="whole-page">
       <Header />
-      <ConnectedClientsCard />
+
+          <ConnectedClientsCard  />
+   
       <CountdownBar
         count={count}
         buttonCreatedDate={buttonCreatedDate}
@@ -53,7 +50,7 @@ function HomePage() {
         buttonPressed={buttonPressed}
       />
       <Form passClicked={passClicked} />
-      <HighScores highScores={highScores}/>
+      <HighScores highScores={highScores} />
     </div>
   );
 }

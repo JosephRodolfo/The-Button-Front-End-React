@@ -25,7 +25,7 @@ const CountdownBar = ({
                 </div>
               ) : (
                 <div>
-                  <img src="images/channels-3.png" classNkame="loader__image" alt="button pressed gif" />
+                  <img src="images/channels-3.png" alt="button pressed gif" />
                   <p>The button has been pressed</p>
                 </div>
               )}

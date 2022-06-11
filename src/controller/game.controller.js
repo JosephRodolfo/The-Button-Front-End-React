@@ -54,7 +54,6 @@ export const controller = {
           count(this.timerArray);
           if (timeArray[1] / timeArray[0] > 0.9) {
             if (timeArray[timeArray.length - 1] !== 1 &&timeArray[0]-timeArray[1]<3) {
-              console.log(timeArray[0]-timeArray[1]);
               this.buttonPressed = true;
               setButtonPressed(this.buttonPressed);
               this.loading = true;
