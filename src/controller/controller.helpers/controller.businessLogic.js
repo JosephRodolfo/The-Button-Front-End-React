@@ -28,7 +28,7 @@ export const calculateTime = () => {
   return promise2;
 };
 
-
+//combines all the necessary server calls to reset the game
 export const resetGame = () => {
   let newPromise = deleteEndDates()
     .then(() => {
@@ -44,7 +44,7 @@ export const resetGame = () => {
 
   return newPromise;
 };
-
+ 
 export const getCreatedDate = (setCreated) =>
   (async () => {
     const fetchedDate = await fetchButtonCreatedDate();

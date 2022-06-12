@@ -17,9 +17,9 @@ const ConnectedClientsCard = () => {
     <div className="connected-clients-card">
 
         {numUsers === 1 ? (
-          <p><span className="num-users">{numUsers}</span> person is watching the button.</p>
+          <p><span className="num-users">{numUsers}</span> visitor is watching the button.</p>
         ) : (
-          <p><span className="num-users">{numUsers}</span> people are watching the button.</p>
+          <p><span className="num-users">{numUsers}</span> visitors are watching the button.</p>
         )}
     </div>
   );

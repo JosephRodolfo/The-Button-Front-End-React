@@ -5,7 +5,7 @@
     max-width: 80rem;
     margin: 0 auto;
     // padding: $s-size;
-    box-shadow:rgba(0,0,0,0.4) 2px 2px 0, white -1px -1px 0px;
+    @include basic-box-shadow;
     display: flex;
     flex-direction: column;
 

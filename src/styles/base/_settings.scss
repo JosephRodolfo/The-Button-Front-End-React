@@ -51,10 +51,17 @@ $desktop-breakpoint: 45rem;
     background-size: 300% 300%;
     background-image: linear-gradient(
           -45deg, 
-          #001f1f 0%, 
-          #004545 25%, 
+          // #001f1f 0%, 
+          // #004545 25%, 
+          // #016161 50%, 
+          // #019191 100%
+          #000a0a 0%, 
+
+          #000a0a 12.5%, 
+          #002d2d 25%, 
           #016161 50%, 
           #019191 100%
+          
     );  
     animation: AnimateBG 20s ease infinite;
 
@@ -65,4 +72,12 @@ $desktop-breakpoint: 45rem;
     100%{background-position:0% 50%}
   }
   
+}
+
+@mixin basic-box-shadow {
+  box-shadow:rgba(0,0,0,0.4) 2px 2px 0, white -1px -1px 0px;
+
+}
+@mixin basic-box-shadow-inset {
+  box-shadow:rgba(0,0,0,0.4) 2px 2px 0  inset, white -1px -1px 0px inset;
 }
