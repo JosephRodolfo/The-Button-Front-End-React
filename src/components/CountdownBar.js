@@ -33,7 +33,10 @@ const CountdownBar = ({
           ) : (
             <div>
               <CountdownDisplay startEnd={count} />
+              <div className="countdown-display-subcontent">
               <p>The button has been alive since {buttonCreatedDate}</p>
+              <img alt="spinning earth gif" src="images/earth.gif"/>
+              </div>
             </div>
           )}
         </div>

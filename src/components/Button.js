@@ -53,12 +53,13 @@ const Form = ({ passClicked }) => {
     <div className="submission-content">
       <div className="content-container">
         <div className="button__content">
+          <label>Name:</label>
           <form className="form">
             <input
               type="text"
               className="text-input"
               onChange={(event) => setAddress(event.target.value)}
-              placeholder="Enter your public address"
+              
             />
             <button
               className="button"

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { socket } from "../service/socket";
 const ConnectedClientsCard = () => {
   const [numUsers, setNumUsers] = useState(0);
@@ -13,6 +13,15 @@ const ConnectedClientsCard = () => {
     };
   }, [numUsers, setNumUsers]);
 
-  return <div>{numUsers}</div>;
+  return (
+    <div className="connected-clients-card">
+
+        {numUsers === 1 ? (
+          <p><span className="num-users">{numUsers}</span> person is watching the button.</p>
+        ) : (
+          <p><span className="num-users">{numUsers}</span> people are watching the button.</p>
+        )}
+    </div>
+  );
 };
 export default ConnectedClientsCard;

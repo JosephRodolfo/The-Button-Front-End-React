@@ -16,3 +16,8 @@ background-color: $windows-off-white;
 box-shadow:rgba(0,0,0,0.4) 2px 2px 0  inset, white -1px -1px 0px inset;
 padding: $m-size;
 }
+.countdown-display-subcontent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

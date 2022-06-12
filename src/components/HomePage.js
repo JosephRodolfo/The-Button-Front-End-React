@@ -1,8 +1,6 @@
 import CountdownBar from "./CountdownBar";
-import Header from "./Header";
 import Form from "./Button";
 import HighScores from "./HighScores";
-import ConnectedClientsCard from "./ConnectedClientsCard";
 import "../styles/styles.scss";
 import { useState, useEffect } from "react";
 import { timer } from "./Timer";
@@ -38,11 +36,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="whole-page">
-      <Header />
-
-          <ConnectedClientsCard  />
-   
+    <div>
       <CountdownBar
         count={count}
         buttonCreatedDate={buttonCreatedDate}

@@ -1,3 +1,4 @@
+header {}
 h1 {
   color: black;
   margin-top: 0;
@@ -18,17 +19,26 @@ header > div.content-container {
 }
 .top-bar {
   background-color: $windows-blue-2;
-
+  height: 1.2em;
   padding: 4px;
   margin: 2px;
   color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
-.top-bar > p {
+.top-bar >div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.top-bar > div> p {
   margin: 0;
+  font-family: sans-serif;
 }
 
 .warning-icon {
