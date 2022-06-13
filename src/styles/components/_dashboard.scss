@@ -1,0 +1,13 @@
+.settings-title {
+    text-decoration: underline;
+}
+
+.dashboard-subheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dashboard-subheader>button {
+    width: max-content;
+}

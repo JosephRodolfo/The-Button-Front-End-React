@@ -15,14 +15,18 @@ function AdminPage() {
     }
   };
 
-  const passHandleConfigurationChange= (settingsInfo) =>{
-    console.log(settingsInfo)
+  const passHandleConfigurationChange = (settingsInfo) =>{
+    console.log(settingsInfo);
+  }
+
+  const passUpLogout =()=>{
+    setToken(null);
   }
 
   return (
-    <div className="whole-page">
+      <div className="content-container">
 
-      {!token ? <Login passHandleLogin={passHandleLogin}/> : <Dashboard passHandleConfigurationChange={passHandleConfigurationChange}/> }
+      {!token ? <Login passHandleLogin={passHandleLogin}/> : <Dashboard passUpLogout={passUpLogout} passHandleConfigurationChange={passHandleConfigurationChange}/> }
     </div>
   );
 }
