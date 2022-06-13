@@ -45,8 +45,8 @@ export const logout = async () => {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    let data = await response.json();
-    console.log(data);        return data;
+    const data = await response.json();
+         return data;
   } catch (e) {
     alert(`Could not log out: ${e}`)
     console.error(`Could not log out: ${e}`);
@@ -74,7 +74,33 @@ export const fetchConfigData = async () => {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    let data = await response.json();
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error(`Could not get config data: ${e}`);
+  }
+};
+
+export const updateConfigData = async (newSettings) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_PORT}/v1/configuration/1`,
+      {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...newSettings}),
+
+      }
+    );
+
+    if (!response.ok) { 
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    const data = await response.json();
     return data;
   } catch (e) {
     console.error(`Could not get config data: ${e}`);

@@ -10,20 +10,22 @@ const Login = ({ passHandleLogin }) => {
   return (
     <div className="login">
       <div className="content-container">
-        <form onSubmit={handleLogin} className="form">
-          <label>Email:</label>
+        <form onSubmit={handleLogin} autoComplete="on" className="form">
+          <label htmlFor="username">Email:</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            type="text"
+            name="username"
           ></input>
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
+            name="password"
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           ></input>
-          <button type="submit" className="button">
-            Log in
-          </button>
+          <input type="submit" value="Log in" className="button" />
         </form>
       </div>
     </div>

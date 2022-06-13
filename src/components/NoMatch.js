@@ -1,9 +1,10 @@
-import React from 'react';
-
+import React from "react";
 
 const NoMatch = () => (
-  <div>
-   <h1>NoMatch</h1>
+  <div class="no-match">
+    <div className="content-container">
+      <h2>404</h2>
+    </div>
   </div>
 );
 

@@ -11,3 +11,9 @@
 .dashboard-subheader>button {
     width: max-content;
 }
+.admin-nav-logout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
