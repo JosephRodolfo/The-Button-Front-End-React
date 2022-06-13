@@ -13,7 +13,8 @@ export const createUser = async (score, address) => {
         throw new Error(`HTTP error: ${response.status}`);
       }
   
-      // let data = await response.json();
+      let data = await response.json();
+      return data;
     } catch (e) {
       console.error(`Could not create new user: ${e}`);
     }

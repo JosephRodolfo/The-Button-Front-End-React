@@ -29,7 +29,7 @@ const Dashboard = () => {
         <div className="current-settings-container">
           <h4>Current Settings</h4>
           <p>
-            Button maximum lifespan: {currentSettings.speed / 60000} minutes
+            Button maximum lifespan: {currentSettings.speed / 3600000} hours
           </p>
           <p>
             Frequency of server calls: {currentSettings.callFrequency / 1000}{" "}

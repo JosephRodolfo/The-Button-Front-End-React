@@ -49,17 +49,15 @@ export const controller = {
         } else {
           this.loading = false;
           loading(this.loading);
-
           this.timerArray = timeArray;
           count(this.timerArray);
           if (timeArray[1] / timeArray[0] > 0.9) {
-            if (timeArray[timeArray.length - 1] !== 1 &&timeArray[0]-timeArray[1]<3) {
+            if (timeArray[timeArray.length - 1] !== 1 &&timeArray[0]-timeArray[1]<5) {
               this.buttonPressed = true;
               setButtonPressed(this.buttonPressed);
               this.loading = true;
               loading(this.loading);
             }
-
             this.getHighScores(highScores);
             getCreatedDate((result) => {
               this.createdDate = result;
@@ -67,7 +65,7 @@ export const controller = {
               created(this.createdDate);
             });
           }
-        }
+          }
       },
       (e) => {
         console.log(e);

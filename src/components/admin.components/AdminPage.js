@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 function AdminPage() {
   const [token, setToken] = useState(null);
 
+  const logout = adminController.logout.bind(null, setToken);
+
   const passHandleLogin = async (loginInfo) => {
     adminController.login(loginInfo, setToken);
   };
@@ -16,9 +18,9 @@ function AdminPage() {
     <div className="content-container">
           <nav className="admin-nav-logout">
             <button className="button">
-              <NavLink onClick={()=>{adminController.logout(setToken)}} to="/">Home</NavLink>
+              <NavLink onClick={logout} to="/">Home</NavLink>
             </button>
-           {token && <button className="button" onClick={()=>{adminController.logout(setToken)}}>
+           {token && <button className="button" onClick={logout}>
               Logout
             </button>}
           </nav>

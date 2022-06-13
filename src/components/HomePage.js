@@ -1,5 +1,5 @@
 import CountdownBar from "./CountdownBar";
-import Form from "./Button";
+import Button from "./Button";
 import HighScores from "./HighScores";
 import "../styles/styles.scss";
 import { useState, useEffect } from "react";
@@ -14,18 +14,11 @@ function HomePage() {
   const [highScores, setHighScores] = useState([]);
   const [buttonPressed, setButtonPressed] = useState(false);
  const  [settings, setCallFrequency] = useState({callFrequency:1000});
-
  
 
-  const passClicked = () => {
-    controller.recieveClickSignal();
-  };
 
 
-  useEffect(()=>{
-    adminController.getConfigData(setCallFrequency)
-    timer.set_interval(settings.callFrequency)
-  }, [loadingStatus, settings.callFrequency])
+
 
   useEffect(() => {
     controller.getHighScores(setHighScores);
@@ -41,6 +34,11 @@ function HomePage() {
       );
     }, 1000);
   }, []);
+  
+  useEffect(()=>{
+    adminController.getConfigData(setCallFrequency)
+    timer.set_interval(settings.callFrequency)
+  }, [loadingStatus, settings.callFrequency])
 
   return (
     <div>
@@ -50,7 +48,7 @@ function HomePage() {
         loadingStatus={loadingStatus}
         buttonPressed={buttonPressed}
       />
-      <Form passClicked={passClicked} />
+      <Button buttonPressed={buttonPressed} />
       <HighScores highScores={highScores} />
     </div>
   );
