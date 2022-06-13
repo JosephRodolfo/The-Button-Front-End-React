@@ -1,6 +1,6 @@
 import React from "react";
 import CountdownDisplay from "./CountdownDisplay";
-
+// import {unixToHuman} from "../utils/unixToHuman"
 const CountdownBar = ({
   loadingStatus,
   count,
@@ -32,6 +32,7 @@ const CountdownBar = ({
             </div>
           ) : (
             <div>
+              {/* <p>{unixToHuman(count[1])}</p> */}
               <CountdownDisplay startEnd={count} />
               <div className="countdown-display-subcontent">
               <p>The button has been alive since {buttonCreatedDate}</p>

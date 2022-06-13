@@ -25,7 +25,7 @@ const Login = ({ passHandleLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           ></input>
-          <input type="submit" value="Log in" className="button" />
+          <button type="submit" className="button">Log in</button>
         </form>
       </div>
     </div>

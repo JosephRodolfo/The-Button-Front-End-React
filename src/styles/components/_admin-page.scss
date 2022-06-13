@@ -1,0 +1,14 @@
+
+
+
+.admin-nav-logout {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+.admin-nav-logout >button {
+    width: fit-content
+}

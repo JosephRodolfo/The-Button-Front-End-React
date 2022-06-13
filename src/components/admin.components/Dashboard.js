@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { adminController } from "../../controller/admin.controller";
-const Dashboard = ({ passUpLogout }) => {
+const Dashboard = () => {
   const [currentSettings, setCurrentSettings] = useState({});
   const [duration, setDuration] = useState(0);
   const [frequency, setFrequency] = useState(0);
@@ -11,14 +10,11 @@ const Dashboard = ({ passUpLogout }) => {
     e.preventDefault();
     const newSettings = {
       speed: duration * 3600000 || currentSettings.speed,
-      callFrequency: frequency || currentSettings.callFrequency,
+      callFrequency: frequency *1000 || currentSettings.callFrequency,
     };
     adminController.updateConfigData(newSettings, setCurrentSettings);
   };
 
-  const handleLogout = async () => {
-    passUpLogout();
-  };
   //on login, fetch current settings
   useEffect(() => {
     adminController.getConfigData(setCurrentSettings);
@@ -28,14 +24,7 @@ const Dashboard = ({ passUpLogout }) => {
       <div className="content-container">
         <div className="dashboard-subheader">
           <h2>Settings</h2>
-          <div className="admin-nav-logout">
-            <button className="button">
-              <NavLink onClick={handleLogout} to="/">Home</NavLink>
-            </button>
-            <button className="button" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
+      
         </div>
         <div className="current-settings-container">
           <h4>Current Settings</h4>
