@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/The-Button-Front-End-React/static/css/main.ab60bb62.css",
+    "main.js": "/The-Button-Front-End-React/static/js/main.a8b26a6f.js",
+    "index.html": "/The-Button-Front-End-React/index.html",
+    "main.ab60bb62.css.map": "/The-Button-Front-End-React/static/css/main.ab60bb62.css.map",
+    "main.a8b26a6f.js.map": "/The-Button-Front-End-React/static/js/main.a8b26a6f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab60bb62.css",
+    "static/js/main.a8b26a6f.js"
+  ]
+}
