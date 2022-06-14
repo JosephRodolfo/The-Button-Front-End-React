@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { timer } from "./Timer";
 import { controller } from "../controller/game.controller";
 import { adminController } from "../controller/admin.controller";
+import { NavLink } from "react-router-dom";
 
 function HomePage() {
   const [count, setDate] = useState([0, 0]);
@@ -13,7 +14,7 @@ function HomePage() {
   const [loadingStatus, setLoadingStatus] = useState(false);
   const [highScores, setHighScores] = useState([]);
   const [buttonPressed, setButtonPressed] = useState(false);
- const  [settings, setCallFrequency] = useState({callFrequency:1000});
+ const  [settings, setCallFrequency] = useState({callFrequency:5000});
  
 
 
@@ -32,7 +33,7 @@ function HomePage() {
         setHighScores,
         setButtonPressed
       );
-    }, 1000);
+    }, 0);
   }, []);
   
   useEffect(()=>{
@@ -50,6 +51,8 @@ function HomePage() {
       />
       <Button buttonPressed={buttonPressed} />
       <HighScores highScores={highScores} />
+      <NavLink className="button" to="/admin">Log in</NavLink>
+
     </div>
   );
 }

@@ -44,11 +44,13 @@ export const resetGame = () => {
 
   return newPromise;
 };
- 
+
 export const getCreatedDate = (setCreated) =>
   (async () => {
     const fetchedDate = await fetchButtonCreatedDate();
-    const date = fetchedDate.created_at;
-    setCreated(date);
-    setCreated((date) => date);
+
+    if (fetchedDate) {
+      const date = fetchedDate.created_at;
+      setCreated(date);
+    }
   })();

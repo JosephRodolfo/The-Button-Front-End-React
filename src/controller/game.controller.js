@@ -1,8 +1,10 @@
 //controller
 // sends to components: array to update bar, loading or not status
 //signals to highscores to refresh when game is over.
+import { config } from "../constants";
 import { setNewEndDate } from "../actions/endDates";
 import { getHighScores } from "../actions/highScores";
+import { config } from "../constants";
 import {
   resetGame,
   getCreatedDate,
@@ -12,7 +14,11 @@ import {
 export const controller = {
   getHighScores: async function (cb) {
     let scores = await getHighScores();
-    cb(scores);
+    if (Array.isArray(scores)) {
+      cb(scores);
+    } else {
+      cb([]);
+    }
   },
   recieveClickSignal: function () {
     setNewEndDate();
@@ -51,8 +57,15 @@ export const controller = {
           loading(this.loading);
           this.timerArray = timeArray;
           count(this.timerArray);
-          if (timeArray[1] / timeArray[0] > 0.9) {
-            if (timeArray[timeArray.length - 1] !== 1 &&timeArray[0]-timeArray[1]<5) {
+          if (timeArray[1] / timeArray[0] > 0.95) {
+            if (
+
+              //The 1 in the following line was the id of the button creation row
+              //clearDB doesn't start at 1. It starts at 4 after wiping table. 
+              //I need to fix this more robustly, but I think this will work for now.
+              timeArray[timeArray.length - 1] !== config.url.CLEARDB_INC &&
+              timeArray[0] - timeArray[1] < 10
+            ) {
               this.buttonPressed = true;
               setButtonPressed(this.buttonPressed);
               this.loading = true;
@@ -65,7 +78,7 @@ export const controller = {
               created(this.createdDate);
             });
           }
-          }
+        }
       },
       (e) => {
         console.log(e);

@@ -1,8 +1,8 @@
+import { config } from "../constants";
 export const fetchEndDate = async () => {
   try {
-    //heroku seemed to add a / last time so must watch when deploying
     const response = await fetch(
-      `${process.env.REACT_APP_PORT}/v1/dates/last/date`,
+      `${config.url.API_URL}/v1/dates/last/date`,
       {
         method: "GET",
         headers: {
@@ -24,8 +24,7 @@ export const fetchEndDate = async () => {
 
 export const fetchButtonCreatedDate = async () => {
   try {
-    //heroku seemed to add a / last time so must watch when deploying
-    const response = await fetch(`${process.env.REACT_APP_PORT}/v1/dates/1`, {
+    const response = await fetch(`${config.url.API_URL}/v1/dates/first/date`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -40,12 +39,13 @@ export const fetchButtonCreatedDate = async () => {
     return data;
   } catch (e) {
     console.error(`Could not get button createdDate date: ${e}`);
+    return
   }
 };
 
 export const setNewEndDate = async () => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_PORT}/v1/dates/`, {
+    const response = await fetch(`${config.url.API_URL}/v1/dates/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export const setNewEndDate = async () => {
 
 export const deleteEndDates = async () => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_PORT}/v1/dates/`, {
+    const response = await fetch(`${config.url.API_URL}/v1/dates/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

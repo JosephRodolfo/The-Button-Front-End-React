@@ -1,4 +1,5 @@
 import ConnectedClientsCard from "./ConnectedClientsCard";
+import warningicon from "../assets/images/warning-icon.png";
 const Header = () => (
   <header className="header">
     <div className="content-container">
@@ -8,7 +9,7 @@ const Header = () => (
             {" "}
             <img
               className="warning-icon"
-              src="images/msg_warning-0.png"
+              src={warningicon}
               alt="warning-icon"
             />{" "}
             <p>Welcome</p>{" "}

@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, HashRouter, Route, BrowserRouter } from "react-router-dom";
 import AdminPage from "../components/admin.components/AdminPage";
 import NoMatch from "../components/NoMatch";
 import HomePage from "../components/HomePage";
@@ -6,7 +6,7 @@ import Header from "../components/Header";
 
 function AppRouter() {
   return (
-    <BrowserRouter>
+    <HashRouter>
           <div className="whole-page">
 
       <Header />
@@ -17,7 +17,7 @@ function AppRouter() {
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

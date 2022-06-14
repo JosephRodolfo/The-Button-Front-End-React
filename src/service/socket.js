@@ -1,2 +1,3 @@
 import { io } from "socket.io-client";
-  export const socket = io(process.env.REACT_APP_PORT);
+import { config } from "../constants";
+  export const socket = io(config.url.API_URL);

@@ -4,7 +4,6 @@ import { getScore } from "./business_logic/Button.businessLogic";
 import { controller } from "../controller/game.controller";
 //memo keeps this from rerendering with parent
 const Button = memo(({buttonPressed}) => {
-  console.log("button");
   const [address, setAddress] = useState("");
   let [isWaiting, setWaiting] = useState(false);
   

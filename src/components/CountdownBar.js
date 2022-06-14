@@ -1,5 +1,8 @@
 import React from "react";
+import pressed from "../assets/images/pressed.png";
+import loader from "../assets/images/loader.gif";
 import CountdownDisplay from "./CountdownDisplay";
+import earth from "../assets/images/earth.gif"
 // import {unixToHuman} from "../utils/unixToHuman"
 const CountdownBar = ({
   loadingStatus,
@@ -19,13 +22,13 @@ const CountdownBar = ({
                   <img
                     alt="loading hourglass"
                     className="loader__image"
-                    src="/images/loader.gif"
+                    src={loader}
                   />
                   <p>The button will return soon.</p>{" "}
                 </div>
               ) : (
                 <div>
-                  <img src="images/channels-3.png" alt="button pressed gif" />
+                  <img src={pressed} alt="button pressed gif" />
                   <p>The button has been pressed</p>
                 </div>
               )}
@@ -36,7 +39,7 @@ const CountdownBar = ({
               <CountdownDisplay startEnd={count} />
               <div className="countdown-display-subcontent">
               <p>The button has been alive since {buttonCreatedDate}</p>
-              <img alt="spinning earth gif" src="images/earth.gif"/>
+              <img alt="spinning earth gif" src={earth}/>
               </div>
             </div>
           )}

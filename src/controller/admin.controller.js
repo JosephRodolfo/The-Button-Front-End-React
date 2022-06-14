@@ -22,12 +22,19 @@ export const adminController = {
 
   getConfigData: async function (configDataCallback) {
     const settings = await fetchConfigData();
-    configDataCallback(settings);
+    if (settings) {
+      configDataCallback(settings);
+    } else {
+      configDataCallback({ callFrequency: 3000, speed: 10000000 });
+    }
   },
   updateConfigData: async function (body, updateCurrentSettingsCallback) {
     let data = await updateConfigData(body);
     if (data.speed) {
-      updateCurrentSettingsCallback({speed: data.speed, callFrequency: data.callFrequency})
+      updateCurrentSettingsCallback({
+        speed: data.speed,
+        callFrequency: data.callFrequency,
+      });
       return;
     }
     alert(JSON.stringify(data));

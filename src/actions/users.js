@@ -1,6 +1,7 @@
+import { config } from "../constants";
 export const createUser = async (score, address) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/user/`, {
+      const response = await fetch(`${config.url.API_URL}/v1/user/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,7 +23,7 @@ export const createUser = async (score, address) => {
 
   export const getUsers = async (callback) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/user/`, {
+      const response = await fetch(`${config.url.API_URL}/v1/user/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +44,7 @@ export const createUser = async (score, address) => {
 
   export const deleteUsers = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/user/`, {
+      const response = await fetch(`${config.url.API_URL}/v1/user/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

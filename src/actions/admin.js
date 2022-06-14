@@ -2,11 +2,11 @@
 //since there aren't many.
 
 //admin log in/log out routes
-
+import { config } from "../constants";
 export const login = async (email, password) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_PORT}/v1/admin/login`,
+      `${config.url.API_URL}/v1/admin/login`,
       {
         method: "POST",
         headers: {
@@ -31,7 +31,7 @@ export const login = async (email, password) => {
 export const logout = async () => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_PORT}/v1/admin/logout`,
+      `${config.url.API_URL}/v1/admin/logout`,
       {
         method: "GET",
         headers: {
@@ -60,7 +60,7 @@ export const logout = async () => {
 export const fetchConfigData = async () => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_PORT}/v1/configuration/1`,
+      `${config.url.API_URL}/v1/configuration/1`,
       {
         method: "GET",
         credentials: "include",
@@ -84,7 +84,7 @@ export const fetchConfigData = async () => {
 export const updateConfigData = async (newSettings) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_PORT}/v1/configuration/1`,
+      `${config.url.API_URL}/v1/configuration/1`,
       {
         method: "PUT",
         credentials: "include",

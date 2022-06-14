@@ -1,6 +1,8 @@
+import { config } from "../constants";
+
 export const getHighScores = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/highScores/`, {
+      const response = await fetch(`${config.url.API_URL}/v1/highScores/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +23,7 @@ export const getHighScores = async () => {
 
   export const copyHighScores = async (callback) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/highScores/copy`, {
+      const response = await fetch(`${config.url.API_URL}/v1/highScores/copy`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +44,7 @@ callback();
 
   export const dropHighScores = async (callback) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PORT}/v1/highScores/drop`, {
+      const response = await fetch(`${config.url.API_URL}/v1/highScores/drop`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
